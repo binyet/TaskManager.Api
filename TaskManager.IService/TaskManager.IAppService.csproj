@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AssemblyName>TaskManager.IAppService</AssemblyName>
+    <RootNamespace>TaskManager.IAppService</RootNamespace>
+  </PropertyGroup>
+
+</Project>
