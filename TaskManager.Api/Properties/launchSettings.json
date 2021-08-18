@@ -20,7 +20,7 @@
     "TaskManager.Api": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "api/Authentication",
+      "launchUrl": "swagger",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },

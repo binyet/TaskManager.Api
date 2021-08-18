@@ -8,9 +8,11 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.13" />
     <PackageReference Include="NLog.Web.AspNetCore" Version="4.13.0" />
+    <PackageReference Include="NSwag.AspNetCore" Version="13.13.2" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\TaskManager.ServiceExtension\TaskManager.ServiceExtensions.csproj" />
     <ProjectReference Include="..\TaskManager.Service\TaskManager.Service.csproj" />
   </ItemGroup>
 
