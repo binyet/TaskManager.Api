@@ -8,5 +8,6 @@ namespace TaskManager.IAppService.Auth
     public interface IAuthenticationService
     {
         public Task<string> GetTestAsync();
+        Task<string> GetTokenAsync(string userName, string pwd);
     }
 }

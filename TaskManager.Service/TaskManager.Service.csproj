@@ -5,11 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.18" />
     <PackageReference Include="Microsoft.Extensions.Logging" Version="5.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\TaskManager.IService\TaskManager.IAppService.csproj" />
+    <ProjectReference Include="..\TaskManager.Model\TaskManager.Model.csproj" />
   </ItemGroup>
 
 </Project>

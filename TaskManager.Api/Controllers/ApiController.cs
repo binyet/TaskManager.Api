@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 namespace TaskManager.Api.Controllers
 {
     [ApiController]
+    [Authorize]
+    [ProducesErrorResponseType(typeof(string))]
     public class ApiController<TService>: ControllerBase
     {
         protected TService Service { get; }
