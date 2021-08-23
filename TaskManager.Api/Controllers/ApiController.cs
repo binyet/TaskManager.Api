@@ -4,12 +4,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TaskManager.Exceptions;
 
 namespace TaskManager.Api.Controllers
 {
     [ApiController]
     [Authorize]
-    [ProducesErrorResponseType(typeof(string))]
+    [ProducesErrorResponseType(typeof(HttpResponseExceptionMessage))]
     public class ApiController<TService>: ControllerBase
     {
         protected TService Service { get; }

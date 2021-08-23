@@ -14,6 +14,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TaskManager.Exceptions;
 using TaskManager.IAppService.Auth;
 using TaskManager.Model.Auth.Authentication;
 using TaskManager.Service.Auth;
@@ -73,6 +74,13 @@ namespace TaskManager.Api
 
                 });
                 config.OperationProcessors.Add(new AspNetCoreOperationSecurityScopeProcessor("JWT"));
+                config.PostProcess = (document) =>
+                {
+                    document.Info.Version = "V1.0";
+                    document.Info.Title = "任务管理器Api说明文档";
+                    document.Info.Description = "任务管理器Api说明文档";
+                    document.Info.TermsOfService = "None";
+                };
             });
         }
 
@@ -82,6 +90,11 @@ namespace TaskManager.Api
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+            }else
+            {
+                app.UseMiddleware<ErrorHandlingMiddleware>();
+                //app.UseExceptionHandler("/Error");
+                //app.UseHsts();
             }
 
             app.UseStaticFiles();

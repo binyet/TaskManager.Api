@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\TaskManager.Exceptions\TaskManager.Exceptions.csproj" />
     <ProjectReference Include="..\TaskManager.Model\TaskManager.Model.csproj" />
     <ProjectReference Include="..\TaskManager.ServiceExtension\TaskManager.ServiceExtensions.csproj" />
     <ProjectReference Include="..\TaskManager.Service\TaskManager.Service.csproj" />
