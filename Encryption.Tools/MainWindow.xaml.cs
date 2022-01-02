@@ -23,6 +23,7 @@ namespace Encryption.Tools
     public partial class MainWindow : Window
     {
         private readonly string key = "binyet1234567890binyet1234567890";
+        private readonly string IV = "binyet";
         public MainWindow()
         {
             InitializeComponent();
@@ -34,7 +35,7 @@ namespace Encryption.Tools
             {
                 return;
             }
-            tb_encryp.Text = AESEncrypHelper.AesEncrypt(tb_decryp.Text, key);
+            tb_encryp.Text = AESEncrypHelper.AesEncrypt(tb_decryp.Text, key, IV);
         }
 
         private void Decryp_Click(object sender, RoutedEventArgs e)
@@ -43,7 +44,7 @@ namespace Encryption.Tools
             {
                 return;
             }
-            tb_decryp.Text = AESEncrypHelper.AesDecrypt(tb_encryp.Text, key);
+            tb_decryp.Text = AESEncrypHelper.AesDecrypt(tb_encryp.Text, key, IV);
         }
 
     }

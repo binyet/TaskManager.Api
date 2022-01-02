@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -12,18 +13,19 @@ namespace TaskManager.Utility
         ///  AES 加密
         /// </summary>
         /// <param name="str">明文（待加密）</param>
-        /// <param name="key">密文</param>
+        /// <param name="key"></param>
+        /// <param name="IV"></param>
         /// <returns></returns>
-        public static string AesEncrypt(string str, string key)
+        public static string AesEncrypt(string str, string key, string IV)
         {
             if (string.IsNullOrEmpty(str)) return null;
             Byte[] toEncryptArray = Encoding.UTF8.GetBytes(str);
 
-            RijndaelManaged rm = new RijndaelManaged
+            RijndaelManaged rm = new System.Security.Cryptography.RijndaelManaged
             {
                 Key = Encoding.UTF8.GetBytes(key),
                 Mode = CipherMode.ECB,
-                Padding = PaddingMode.None
+                Padding = PaddingMode.PKCS7
             };
 
             ICryptoTransform cTransform = rm.CreateEncryptor();
@@ -36,9 +38,10 @@ namespace TaskManager.Utility
         ///  AES 解密
         /// </summary>
         /// <param name="str">明文（待解密）</param>
-        /// <param name="key">密文</param>
+        /// <param name="key"></param>
+        /// <param name="IV"></param>
         /// <returns></returns>
-        public static string AesDecrypt(string str, string key)
+        public static string AesDecrypt(string str, string key, string IV)
         {
             if (string.IsNullOrEmpty(str)) return null;
             Byte[] toEncryptArray = Convert.FromBase64String(str);
@@ -47,7 +50,7 @@ namespace TaskManager.Utility
             {
                 Key = Encoding.UTF8.GetBytes(key),
                 Mode = CipherMode.ECB,
-                Padding = PaddingMode.None
+                Padding = PaddingMode.PKCS7
             };
 
             ICryptoTransform cTransform = rm.CreateDecryptor();
@@ -56,11 +59,5 @@ namespace TaskManager.Utility
             return Encoding.UTF8.GetString(resultArray);
         }
 
-        public static (bool, int) GetTest()
-        {
-            int a = 10;
-            bool b = true;
-            return (b, a);
-        }
     }
 }
