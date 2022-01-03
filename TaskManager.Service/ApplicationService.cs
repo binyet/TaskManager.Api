@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using TaskManager.DBContext;
 
 namespace TaskManager.Service
 {
@@ -12,9 +13,11 @@ namespace TaskManager.Service
     public abstract class ApplicationService<TCategoryName> : ApplicationService where TCategoryName : ApplicationService
     {
         protected ILogger<TCategoryName> Logger { get; }
-        public ApplicationService(ILogger<TCategoryName> logger)
+        protected TaskManagerContext Context { get; }
+        public ApplicationService(ILogger<TCategoryName> logger, TaskManagerContext contxt)
         {
             this.Logger = logger;
+            this.Context = contxt;
         }
     }
 }

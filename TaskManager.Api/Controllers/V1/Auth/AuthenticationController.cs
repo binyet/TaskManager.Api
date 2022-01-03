@@ -31,7 +31,6 @@ namespace TaskManager.Api.Controllers.V1.Auth
         [AllowAnonymous]
         public async Task<string> GetTestAsyn()
         {
-            throw new Exception();
             return await this.Service.GetTestAsync();
         }
     }
