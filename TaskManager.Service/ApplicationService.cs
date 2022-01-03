@@ -10,14 +10,14 @@ namespace TaskManager.Service
     {
 
     }
-    public abstract class ApplicationService<TCategoryName> : ApplicationService where TCategoryName : ApplicationService
+    public abstract class ApplicationService<TCategoryName, TRepository> : ApplicationService where TCategoryName : ApplicationService
     {
         protected ILogger<TCategoryName> Logger { get; }
-        protected TaskManagerContext Context { get; }
-        public ApplicationService(ILogger<TCategoryName> logger, TaskManagerContext contxt)
+        protected TRepository Repository { get; }
+        public ApplicationService(ILogger<TCategoryName> logger, TRepository repository)
         {
             this.Logger = logger;
-            this.Context = contxt;
+            this.Repository = repository;
         }
     }
 }

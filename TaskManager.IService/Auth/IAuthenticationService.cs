@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using TaskManager.Model.Auth.Authentication;
 
 namespace TaskManager.IAppService.Auth
 {
     public interface IAuthenticationService
     {
-        public Task<string> GetTestAsync();
-        Task<string> GetTokenAsync(string userName, string pwd);
+        Task<UserLoginModel> GetTokenAsync(string userAccount, string pwd);
     }
 }

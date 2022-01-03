@@ -23,6 +23,13 @@ namespace TaskManager.DBContext
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<TMUser>().HasData(new TMUser()
+            {
+                ID = 1,
+                UserName = "超级管理员",
+                Password = "YnwG8VF+FTANhwXchfJNSA==",
+                UserAccount = "admin"
+            });
         }
     }
 }

@@ -19,9 +19,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Encryption.Tools", "Encrypt
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskManager.Utility", "TaskManager.Utility\TaskManager.Utility.csproj", "{01424491-2500-416C-9DE6-6E266C6E26C8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskManager.DBContext", "TaskManager.DB\TaskManager.DBContext.csproj", "{D33428EF-10E9-4213-AFBC-48480D5642C7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskManager.DBContext", "TaskManager.DB\TaskManager.DBContext.csproj", "{D33428EF-10E9-4213-AFBC-48480D5642C7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskManager.Entities", "TaskManager.Entities\TaskManager.Entities.csproj", "{AA428743-F05B-4CB9-B48E-4390394DF314}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskManager.Entities", "TaskManager.Entities\TaskManager.Entities.csproj", "{AA428743-F05B-4CB9-B48E-4390394DF314}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskManager.Repository", "TaskManager.Repository\TaskManager.Repository.csproj", "{7A0AC8C6-9D66-4DEB-B617-AF7BB0BC03F0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +71,10 @@ Global
 		{AA428743-F05B-4CB9-B48E-4390394DF314}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AA428743-F05B-4CB9-B48E-4390394DF314}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AA428743-F05B-4CB9-B48E-4390394DF314}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A0AC8C6-9D66-4DEB-B617-AF7BB0BC03F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A0AC8C6-9D66-4DEB-B617-AF7BB0BC03F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A0AC8C6-9D66-4DEB-B617-AF7BB0BC03F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A0AC8C6-9D66-4DEB-B617-AF7BB0BC03F0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

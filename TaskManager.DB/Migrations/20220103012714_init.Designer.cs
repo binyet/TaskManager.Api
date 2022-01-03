@@ -8,7 +8,7 @@ using TaskManager.DBContext;
 namespace TaskManager.DBContext.Migrations
 {
     [DbContext(typeof(TaskManagerContext))]
-    [Migration("20220103003223_init")]
+    [Migration("20220103012714_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,12 +24,33 @@ namespace TaskManager.DBContext.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasMaxLength(128)
+                        .HasColumnType("varchar(128)");
+
+                    b.Property<string>("UserAccount")
+                        .IsRequired()
+                        .HasMaxLength(64)
+                        .HasColumnType("varchar(64)");
+
                     b.Property<string>("UserName")
-                        .HasColumnType("text");
+                        .IsRequired()
+                        .HasMaxLength(64)
+                        .HasColumnType("varchar(64)");
 
                     b.HasKey("ID");
 
                     b.ToTable("TMUser");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            Password = "YnwG8VF+FTANhwXchfJNSA==",
+                            UserAccount = "admin",
+                            UserName = "超级管理员"
+                        });
                 });
 #pragma warning restore 612, 618
         }

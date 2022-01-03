@@ -40,6 +40,7 @@ namespace TaskManager.Api
             services.AddControllers();
             services.AddDbContext<TaskManagerContext>(options => options.UseMySQL(Configuration.GetConnectionString("SQL")));
 
+            services.AddRepository();
             var secreKey = Configuration.GetSection("JwtSettings:SecretKey").Value;
             var issuer = Configuration.GetSection("JwtSettings:Issuer").Value;
             var audience = Configuration.GetSection("JwtSettings:Audience").Value;
@@ -64,7 +65,6 @@ namespace TaskManager.Api
                     ClockSkew = TimeSpan.Zero
                 };
             });
-
 
             services.AddOpenApiDocument(config =>
             {

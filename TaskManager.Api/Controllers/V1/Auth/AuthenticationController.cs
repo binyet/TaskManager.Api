@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 using TaskManager.IAppService.Auth;
+using TaskManager.Model.Auth.Authentication;
 
 namespace TaskManager.Api.Controllers.V1.Auth
 {
@@ -21,17 +22,9 @@ namespace TaskManager.Api.Controllers.V1.Auth
         [Description("获取token")]
         [HttpPost]
         [AllowAnonymous]
-        public async Task<string> GetToken(string userName, string pwd)
+        public async Task<UserLoginModel> GetToken(string userAccount, string pwd)
         {
-            return await this.Service.GetTokenAsync(userName, pwd);
-        }
-
-        [Description("测试Api")]
-        [HttpGet]
-        [AllowAnonymous]
-        public async Task<string> GetTestAsyn()
-        {
-            return await this.Service.GetTestAsync();
+            return await this.Service.GetTokenAsync(userAccount, pwd);
         }
     }
 }

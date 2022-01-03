@@ -6,4 +6,8 @@
     <RootNamespace>TaskManager.IAppService</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\TaskManager.Model\TaskManager.Model.csproj" />
+  </ItemGroup>
+
 </Project>

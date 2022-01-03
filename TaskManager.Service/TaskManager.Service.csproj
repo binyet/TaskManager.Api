@@ -13,6 +13,8 @@
     <ProjectReference Include="..\TaskManager.DB\TaskManager.DBContext.csproj" />
     <ProjectReference Include="..\TaskManager.IService\TaskManager.IAppService.csproj" />
     <ProjectReference Include="..\TaskManager.Model\TaskManager.Model.csproj" />
+    <ProjectReference Include="..\TaskManager.Repository\TaskManager.Repository.csproj" />
+    <ProjectReference Include="..\TaskManager.Utility\TaskManager.Utility.csproj" />
   </ItemGroup>
 
 </Project>

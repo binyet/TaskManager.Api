@@ -23,4 +23,8 @@
     <ProjectReference Include="..\TaskManager.Entities\TaskManager.Entities.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+
 </Project>

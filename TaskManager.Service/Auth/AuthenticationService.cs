@@ -12,35 +12,47 @@ using TaskManager.DBContext;
 using TaskManager.Entities;
 using TaskManager.IAppService.Auth;
 using TaskManager.Model.Auth.Authentication;
+using TaskManager.Repository;
+using TaskManager.Utility;
 
 namespace TaskManager.Service.Auth
 {
-    public class AuthenticationService : ApplicationService<AuthenticationService>, IAuthenticationService
+    public class AuthenticationService : ApplicationService<AuthenticationService, IKeyRepository<TMUser>>, IAuthenticationService
     {
-        private IOptions<JwtSettings> JwtSettingOption { get; set; } 
-        public AuthenticationService(ILogger<AuthenticationService> logger, IOptions<JwtSettings> options, TaskManagerContext context): base(logger, context)
+        private IOptions<JwtSettings> JwtSettingOption { get; set; }
+        public AuthenticationService(ILogger<AuthenticationService> logger, IOptions<JwtSettings> options, IKeyRepository<TMUser> repository) : base(logger, repository)
         {
             this.JwtSettingOption = options;
         }
-        public async Task<string> GetTestAsync()
-        {
-            var user = new TMUser()
-            {
-                UserName = "张三"
-            };
-            this.Context.TMUser.Add(user);
-            await this.Context.SaveChangesAsync();
 
-            return this.Context.TMUser.FirstOrDefault().ID.ToString();
-        }
-
-        public async Task<string> GetTokenAsync(string userName, string pwd)
+        public async Task<UserLoginModel> GetTokenAsync(string userAccount, string pwd)
         {
             var claims = new List<Claim>
             {
-                new Claim(ClaimTypes.Name, userName),
+                new Claim(ClaimTypes.Name, userAccount),
                 new Claim("Password", pwd)
             };
+            var user = await this.Repository.FirstOrDefaultAsync(p => p.UserAccount == userAccount);
+            if (user == null)
+            {
+                return new UserLoginModel
+                {
+                    Details = "用户不存在",
+                    LoginResult = 0,
+                    Token = ""
+                };
+            }
+            string aesKey = "binyet1234567890binyet1234567890";
+            var password = AESEncrypHelper.AesEncrypt(pwd, aesKey);
+            if(password != user.Password)
+            {
+                return new UserLoginModel
+                {
+                    Details = "用户名/密码错误",
+                    LoginResult = 2,
+                    Token = ""
+                };
+            }
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(JwtSettingOption.Value.SecretKey));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
@@ -52,7 +64,12 @@ namespace TaskManager.Service.Auth
                 signingCredentials: creds
                 );
             var tokenStr = new JwtSecurityTokenHandler().WriteToken(token);
-            return tokenStr;
+            return new UserLoginModel
+            {
+                Token = tokenStr,
+                Details = "登录成功",
+                LoginResult = 1
+            };
         }
     }
 }

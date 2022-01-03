@@ -16,7 +16,7 @@ namespace TaskManager.Utility
         /// <param name="key"></param>
         /// <param name="IV"></param>
         /// <returns></returns>
-        public static string AesEncrypt(string str, string key, string IV)
+        public static string AesEncrypt(string str, string key)
         {
             if (string.IsNullOrEmpty(str)) return null;
             Byte[] toEncryptArray = Encoding.UTF8.GetBytes(str);
@@ -41,7 +41,7 @@ namespace TaskManager.Utility
         /// <param name="key"></param>
         /// <param name="IV"></param>
         /// <returns></returns>
-        public static string AesDecrypt(string str, string key, string IV)
+        public static string AesDecrypt(string str, string key)
         {
             if (string.IsNullOrEmpty(str)) return null;
             Byte[] toEncryptArray = Convert.FromBase64String(str);

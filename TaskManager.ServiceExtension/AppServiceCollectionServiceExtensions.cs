@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using TaskManager.IAppService.Auth;
+using TaskManager.Repository;
 using TaskManager.Service;
 
 namespace Microsoft.Extensions.DependencyInjection
@@ -24,6 +25,12 @@ namespace Microsoft.Extensions.DependencyInjection
                         service.AddScoped(p, impl);
                     }
                 });
+            return service;
+        }
+
+        public static IServiceCollection AddRepository(this IServiceCollection service)
+        {
+            service.AddScoped(typeof(IKeyRepository<>), typeof(KeyRepository<>));
             return service;
         }
 
