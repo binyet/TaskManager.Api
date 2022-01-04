@@ -18,6 +18,7 @@ using System.Threading.Tasks;
 using TaskManager.DBContext;
 using TaskManager.Exceptions;
 using TaskManager.IAppService.Auth;
+using TaskManager.Model;
 using TaskManager.Model.Auth.Authentication;
 using TaskManager.Service.Auth;
 
@@ -87,6 +88,7 @@ namespace TaskManager.Api
                     document.Info.TermsOfService = "None";
                 };
             });
+            services.AddAutoMapper(typeof(IModel).Assembly);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

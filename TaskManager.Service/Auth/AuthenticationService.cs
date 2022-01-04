@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using AutoMapper;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System;
@@ -20,7 +21,7 @@ namespace TaskManager.Service.Auth
     public class AuthenticationService : ApplicationService<AuthenticationService, IKeyRepository<TMUser>>, IAuthenticationService
     {
         private IOptions<JwtSettings> JwtSettingOption { get; set; }
-        public AuthenticationService(ILogger<AuthenticationService> logger, IOptions<JwtSettings> options, IKeyRepository<TMUser> repository) : base(logger, repository)
+        public AuthenticationService(ILogger<AuthenticationService> logger, IOptions<JwtSettings> options, IKeyRepository<TMUser> repository, IMapper mapper) : base(logger, repository, mapper)
         {
             this.JwtSettingOption = options;
         }

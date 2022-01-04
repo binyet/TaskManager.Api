@@ -1,10 +1,19 @@
-﻿using System;
+﻿using AutoMapper;
+using System;
 using System.Collections.Generic;
 using System.Text;
+using TaskManager.Entities;
 
 namespace TaskManager.Model.UserManager.User
 {
-    internal class EditUserModel
+    [AutoMap(typeof(TMUser), ReverseMap = true)]
+    public class EditUserModel
     {
+        public int ID { get; set; }
+
+        public string UserName { get; set; }
+        public string UserAccount { get; set; }
+        public string Password { get; set; }
+
     }
 }

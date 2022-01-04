@@ -35,7 +35,7 @@ namespace Encryption.Tools
             {
                 return;
             }
-            tb_encryp.Text = AESEncrypHelper.AesEncrypt(tb_decryp.Text, key, IV);
+            tb_encryp.Text = AESEncrypHelper.AesEncrypt(tb_decryp.Text, key);
         }
 
         private void Decryp_Click(object sender, RoutedEventArgs e)
@@ -44,7 +44,7 @@ namespace Encryption.Tools
             {
                 return;
             }
-            tb_decryp.Text = AESEncrypHelper.AesDecrypt(tb_encryp.Text, key, IV);
+            tb_decryp.Text = AESEncrypHelper.AesDecrypt(tb_encryp.Text, key);
         }
 
     }
